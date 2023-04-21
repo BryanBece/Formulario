@@ -22,28 +22,63 @@
 <body>
     <div class="container">
         <h2>Formulario</h2>
-        <form onsubmit="return validarFormulario()">
+        <form onsubmit="return validarFormulario()" novalidate action="" method="POST" id="login" name="login"
+            enctype="application/x-www-form-urlencoded">
             <div class="form-group">
                 <label for="rut">RUT:</label>
                 <input type="text" class="form-control" id="rut" placeholder="Ingresa tu RUT" required />
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    El valor ingresado es incorrecto. El Rut es sin puntos y con
+                    guión.
+                </div>
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required />
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    El valor ingresado es incorrecto, El nombre del postulante
+                    debe tener entre 3 y 20 caracteres
+                </div>
             </div>
             <div class="form-group">
                 <label for="apellido_paterno">Apellido Paterno:</label>
                 <input type="text" class="form-control" id="apellido_paterno" placeholder="Ingresa tu apellido paterno"
                     required />
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    El valor ingresado es incorrecto, El apellido del postulante
+                    debe tener entre 3 y 20 caracteres
+                </div>
             </div>
             <div class="form-group">
                 <label for="apellido_materno">Apellido Materno:</label>
                 <input type="text" class="form-control" id="apellido_materno" placeholder="Ingresa tu apellido materno"
                     required />
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    El valor ingresado es incorrecto, El apellido del postulante
+                    debe tener entre 3 y 20 caracteres
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fechaNac" />
             </div>
             <div class="form-group">
                 <label for="edad">Edad:</label>
                 <input type="number" class="form-control" id="edad" placeholder="Ingresa tu edad" required />
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    El valor ingresado es incorrecto, el postulante debe tener
+                    entre 18 y 35 años.
+                </div>
             </div>
             <div class="form-group">
                 <label for="genero">Género:</label>
@@ -53,29 +88,50 @@
                     <option>Femenino</option>
                     <option>Otro</option>
                 </select>
+
+                <div class="valid-feedback"></div>
+
+                <div class="invalid-feedback">
+                    Debe seleccionar una opción.
+                </div>
             </div>
-            <div class="form-group">
-                <label for="profesion">Profesión:</label>
-                <input type="text" class="form-control" id="profesion" placeholder="Ingresa tu profesión" required />
-            </div>
-            <div class="form-group">
-                <label for="motivacion">Motivación por el cargo:</label>
-                <textarea class="form-control" id="motivacion" placeholder="Ingresa tu motivación por el cargo" rows="8"
-                    required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="celular">Celular:</label>
-                <input type="text" class="form-control" id="celular" placeholder="Ingresa tu número de celular"
-                    required />
-            </div>
-            <button type="submit" class="btn btn-dark">Enviar</button>
-            <button type="button" class="btn btn-dark" onclick="generarCarta()">Crear Carta</button>
-        </form>
-        <br />
-        <div class="form-group">
-            <label for="carta">Carta de Presentación: </label>
-            <textarea class="form-control" id="carta" name="carta" rows="8" disabled></textarea>
+    <div class="form-group">
+        <label for="profesion">Profesión:</label>
+        <input type="text" class="form-control" id="profesion" placeholder="Ingresa tu profesión" required />
+        <div class="valid-feedback"></div>
+
+        <div class="invalid-feedback">
+            Debe ingresar una profesión.
         </div>
+    </div>
+    <div class="form-group">
+        <label for="motivacion">Motivación por el cargo:</label>
+        <textarea class="form-control" id="motivacion" placeholder="Ingresa tu motivación por el cargo" rows="8"
+            required></textarea>
+        <div class="valid-feedback"></div>
+
+        <div class="invalid-feedback">
+            Debe ingresar su motivación por el cargo.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="celular">Celular:</label>
+        <input type="tel" class="form-control" id="celular" placeholder="Ingresa tu número de celular" required />
+
+        <div class="valid-feedback"></div>
+
+        <div class="invalid-feedback">
+            Solo números.
+        </div>
+    </div>
+    <button type="submit" class="btn btn-dark" onclick="envioFormulario()">Enviar</button>
+    <button type="button" class="btn btn-dark" onclick="generarCarta()">Crear Carta</button>
+    </form>
+    <br />
+    <div class="form-group">
+        <label for="carta">Carta de Presentación: </label>
+        <textarea class="form-control" id="carta" name="carta" rows="8" disabled></textarea>
+    </div>
     </div>
 </body>
 

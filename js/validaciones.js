@@ -43,7 +43,7 @@ function validarFormulario() {
         apellidoMaterno.classList.remove("is-invalid");
     }
     // validacion edad
-    if (edad.value < 18 || edad.value > 50) {
+    if (edad.value < 18 || edad.value > 35) {
         edad.classList.add("is-invalid");
         edad.classList.remove("is-valid");
     } else {
@@ -59,7 +59,7 @@ function validarFormulario() {
         genero.classList.remove("is-invalid");
     }
     // validacion celular
-    if (celular.value.length < 9 || celular.value.length > 12) {
+    if ( isNaN(celular.value) ||celular.value.length < 9 || celular.value.length > 12) {
         celular.classList.add("is-invalid");
         celular.classList.remove("is-valid");
     } else {
@@ -99,8 +99,8 @@ function generarCarta() {
     if (validarFormulario()) {
         const rut = document.getElementById("rut").value;
         const nombre = document.getElementById("nombre").value;
-        const apellidoPaterno = document.getElementById("apellido-paterno").value;
-        const apellidoMaterno = document.getElementById("apellido-materno").value;
+        const apellidoPaterno = document.getElementById("apellido_paterno").value;
+        const apellidoMaterno = document.getElementById("apellido_materno").value;
         const edad = document.getElementById("edad").value;
         const genero = document.getElementById("genero").value;
         const celular = document.getElementById("celular").value;
@@ -112,7 +112,7 @@ function generarCarta() {
   Me dirijo a ustedes con el fin de expresar mi interés en postular al puesto de Apoyo Ambiental Para Chiloé.
   
   Soy ${nombre} ${apellidoPaterno} ${apellidoMaterno}, con RUT ${rut}, y me considero una persona proactiva, responsable y con ganas de aprender. 
-  Mi experiencia laboral se ha enfocado principalmente en ${profesion}.
+  Actualmente me desempeño como ${profesion}.
   
   Mi motivacion por el cargo es: ${motivacion}
   
@@ -127,3 +127,15 @@ function generarCarta() {
         document.getElementById("carta").value = carta;
     }
 }
+
+
+function envioFormulario(){
+    if (validarFormulario()) {
+        const nombre = document.getElementById("nombre").value;
+        const apellidoPaterno = document.getElementById("apellido_paterno").value;
+        const mensaje = `Estimado/a ${nombre} ${apellidoPaterno}, su solicitud fue enviada con éxito.
+        Nos contactaremos con usted a la brevedad.`;
+        alert(mensaje);
+    }
+}
+
